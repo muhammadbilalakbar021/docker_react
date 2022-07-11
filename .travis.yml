@@ -1,0 +1,9 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t bilal/simple-react -f Dockerfile.dev
+
+script:
+  - docker run bilal/simple-react npm run test -- --coverage
