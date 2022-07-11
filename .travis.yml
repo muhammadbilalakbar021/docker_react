@@ -6,4 +6,5 @@ before_install:
   - docker build -t bilal/simple-react -f Dockerfile.dev .
 
 script:
-  - docker run bilal/simple-react npm run test -- --coverage 
+  - docker run -e CI=true bilal/simple-react npm run test -- --coverage
+
