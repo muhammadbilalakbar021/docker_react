@@ -8,3 +8,15 @@ before_install:
 script:
   - docker run -e CI=true bilal/simple-react npm run test -- --coverage
 
+deploy:
+  provider: elasticbeanstalk
+  region: "ap-northeast-1"
+  app: "docker_react"
+  env: "Dockerreact-env"
+  bucket_name: "elasticbeanstalk-ap-northeast-1-106951656790"
+  bucket_path: "docker_react"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: 
+    secure: $AWS_SECRET_KEY
